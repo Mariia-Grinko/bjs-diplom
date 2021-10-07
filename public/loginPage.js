@@ -1,25 +1,25 @@
 "use strict";
 
-const UserFormObject = new UserForm();
+const userFormObject = new UserForm();
 
-UserFormObject.loginFormCallback = function(data) {
+userFormObject.loginFormCallback = function(data) {
 
     ApiConnector.login(data, function(responce) {
-        if (responce.success === true) {
+        if (responce.success) {
             location.reload();
         } else {
-            alert(responce.error);
+            userFormObject.setLoginErrorMessage(responce.error);
         }
     });
 }
 
-UserFormObject.registerFormCallback = function(data) {
+userFormObject.registerFormCallback = function(data) {
 
     ApiConnector.register(data, function(responce) {
-        if (responce.success === true) {
+        if (responce.success) {
             location.reload();
         } else {
-            alert(responce.error);
+            userFormObject.setRegisterErrorMessage(responce.error);
         }
     });
 }
